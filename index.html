@@ -112,14 +112,14 @@
       padding: 10px;
       border-right: 2px solid #ffcc00;
     }
-    /* Menu Styles */
+    /* Menu & Overlay Styles */
     .overlay-menu {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(5, 5, 5, 0.92);
+      background: rgba(5, 5, 5, 0.95);
       z-index: 100;
       display: flex;
       flex-direction: column;
@@ -148,7 +148,7 @@
       font-family: inherit;
       font-size: 14px;
       cursor: pointer;
-      width: 220px;
+      width: 240px;
       transition: all 0.2s;
     }
     .btn:hover {
@@ -156,6 +156,31 @@
       color: #000;
       border-color: #fff;
     }
+
+    /* Settings Panel */
+    .settings-panel {
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      width: 300px;
+      background: rgba(20, 20, 20, 0.8);
+      padding: 20px;
+      border: 1px solid #444;
+      margin-bottom: 15px;
+    }
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+    }
+    .setting-item label {
+      color: #ccc;
+    }
+    .setting-item input[type="range"] {
+      width: 120px;
+    }
+
     /* Controls Overlay for Mobile */
     #mobile-controls {
       display: none;
@@ -218,11 +243,32 @@
     <div id="btn-crouch" class="touch-btn" style="bottom: 100px; right: 120px; width: 50px; height: 50px;">C</div>
   </div>
 
+  <!-- Menu Principal e Configurações -->
   <div id="main-menu" class="overlay-menu">
     <div class="menu-title">BODYCAM</div>
     <div class="menu-subtitle">OPERAÇÃO ABISMO — SETOR 07</div>
-    <button class="btn" id="btn-start">INICIAR OPERAÇÃO</button>
-    <button class="btn" id="btn-settings">CONFIGURAÇÕES</button>
+
+    <div id="menu-buttons">
+      <button class="btn" id="btn-start">INICIAR OPERAÇÃO</button>
+      <br />
+      <button class="btn" id="btn-settings">CONFIGURAÇÕES</button>
+    </div>
+
+    <div id="settings-panel" class="settings-panel">
+      <div class="setting-item">
+        <label for="sens-slider">SENSIBILIDADE</label>
+        <input type="range" id="sens-slider" min="1" max="10" value="5" />
+      </div>
+      <div class="setting-item">
+        <label for="volume-slider">VOLUME MASTER</label>
+        <input type="range" id="volume-slider" min="0" max="100" value="50" />
+      </div>
+      <div class="setting-item">
+        <label for="bodycam-toggle">EFEITOS BODYCAM</label>
+        <input type="checkbox" id="bodycam-toggle" checked />
+      </div>
+      <button class="btn" id="btn-back-settings" style="width: 100%; margin-top: 10px;">VOLTAR</button>
+    </div>
   </div>
 
   <script type="module" src="/src/main.js"></script>
